@@ -8,17 +8,6 @@
 
 // Section 3.1:
 
-class Queue {
-public:
-   Queue();
-   bool empty() const;
-   Error_code append(const Queue_entry &x);
-   Error_code serve();
-   Error_code retrieve(Queue_entry &x) const;
-// Additional members will represent queue data.
-};
-
-
 class Extended_queue: public Queue {
 public:
    bool full() const;

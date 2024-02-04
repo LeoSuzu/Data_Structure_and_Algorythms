@@ -1,0 +1,6 @@
+# ninja log v5
+4	2634	1707049290244930533	CMakeFiles/Exercise1.dir/Queue.cpp.o	51a89a56e2e576cf
+7	2642	1707049290251552803	CMakeFiles/Exercise1.dir/Utility.cpp.o	1efbf7d0b0d4853d
+1	2649	1707049290274414768	CMakeFiles/Exercise1.dir/Extended_queue.cpp.o	f2787ad2fb55a51a
+2	2660	1707049290286290033	CMakeFiles/Exercise1.dir/main.cpp.o	8b5288e1e924a154
+2660	2769	1707049290404582552	Exercise1	84f31b589c09ec66
