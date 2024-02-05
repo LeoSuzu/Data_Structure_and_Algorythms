@@ -170,48 +170,48 @@ int main()
 	s.push('b');
 	s.push('c');
 
-	s.print("Stack s before stack_to_queue(s, q):");
-	q.print("Queue q before stack_to_queue(s, q):");
+    s.print("Pino s ennen stack_to_queue(s, q):");
+    q.print("Jono q ennen stack_to_queue(s, q):");
 
-	stack_to_queue(s, q);
+    stack_to_queue(s, q);
 
-	s.print("Stack s after stack_to_queue(s, q):");
-	q.print("Queue q after stack_to_queue(s, q):");
+    s.print("Pino s jälkeen stack_to_queue(s, q):");
+    q.print("Jono q jälkeen stack_to_queue(s, q):");
 
-	s.print("Stack s before queue_to_stack(s, q):");
-	q.print("Queue q before queue_to_stack(s, q):");
+    s.print("Pino s ennen queue_to_stack(s, q):");
+    q.print("Jono q ennen queue_to_stack(s, q):");
 
 	queue_to_stack(s, q);
 
 	if ( false )
-		cout << "Heippa" << endl;
+		cout << "Testi" << endl;
 
-	s.print("Stack s after queue_to_stack(s, q):");
-	q.print("Queue q after queue_to_stack(s, q):");
+    s.print("Pino s jälkeen queue_to_stack(s, q):");
+    q.print("Jono q jälkeen queue_to_stack(s, q):");
 
-	Stack t;
-	
-	s.print("Stack s before move_stack(s, t):");
-	t.print("Stack t before move_stack(s, t)::");
+    Stack t;
 
-	move_stack(s, t);
+    s.print("Pino s ennen move_stack(s, t):");
+    t.print("Pino t ennen move_stack(s, t)::");
 
-	s.print("Stack s after move_stack(s, t):");
-	t.print("Stack t after move_stack(s, t)::");
+    move_stack(s, t);
 
-	t.print("Stack t before reverse_move_stack(t, s):");
-	s.print("Stack s before reverse_move_stack(t, s):");
+    s.print("Pino s jälkeen move_stack(s, t):");
+    t.print("Pino t jälkeen move_stack(s, t)::");
 
-	reverse_move_stack(t, s);
+    t.print("Pino t ennen reverse_move_stack(t, s):");
+    s.print("Pino s ennen reverse_move_stack(t, s):");
 
-	t.print("Stack t after reverse_move_stack(t, s):");
-	s.print("Stack s after reverse_move_stack(t, s):");
+    reverse_move_stack(t, s);
 
-	s.print("Stack s before reverse_stack(s):");
-	
-	reverse_stack(s);
+    t.print("Pino t jälkeen reverse_move_stack(t, s):");
+    s.print("Pino s jälkeen reverse_move_stack(t, s):");
 
-	s.print("Stack s before reverse_stack(s):");
+    s.print("Pino s ennen reverse_stack(s):");
+
+    reverse_stack(s);
+
+    s.print("Pino s jälkeen reverse_stack(s):");
 
 	return 0;
 }
