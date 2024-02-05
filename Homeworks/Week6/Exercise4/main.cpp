@@ -7,17 +7,17 @@ typedef char Entry;
 #include "stack.h"
 
 // QUeue and Stack are defined in queue.h and stack.h
+// Error codes are defined in utility.h
+
+// Queue ja Stack ohjelma. Tehtävä viikko 6.4
 
 Error_code stack_to_queue(Stack &s, Queue &q)
-/* 
- 
-Pre:   The Stack s and the Queue q have the same entry
-      type.
-Post: All entries from s have been moved to q.
-      If there is not enough room in q to hold
-      all entries in s return a code of overflow, otherwise
-      return success.
- 
+/*
+Ennakkoehto: Pino s ja jono q käyttävät samaa tietotyyppiä.
+
+Jälkiehto: Kaikki alkiot pinosta s on siirretty jono q:hen.
+ Jos jonossa q ei ole tarpeeksi tilaa kaikille pinon s alkioille,
+ palautetaan virhekoodi overflow, muuten palautetaan success.
 */
 
 {
@@ -32,17 +32,13 @@ Post: All entries from s have been moved to q.
 }
 
 Error_code queue_to_stack(Stack &s, Queue &q)
-/* 
- 
-Pre:   The Stack s and the Queue q have the same entry
-      type.
-Post: All entries from q have been moved to s.
-      If there is not enough room in s to hold
-      all entries in q return a code of overflow, otherwise
-      return success.
- 
-*/
+/*
+Ennakkoehto: Pino s ja jono q käyttävät samaa tietotyyppiä.
 
+ Jälkiehto: Kaikki alkiot jonosta q on siirretty pinoon s.
+ Jos pinossa s ei ole tarpeeksi tilaa kaikille jonon q alkioille,
+palautetaan virhekoodi overflow, muuten palautetaan success.
+*/
 {
    Error_code outcome = success;
    Entry item;
@@ -56,14 +52,12 @@ Post: All entries from q have been moved to s.
  
 Error_code move_stack(Stack &s, Stack &t)
 /* 
- 
-Pre:   None.
-Post: All entries from s have been moved in order
-      onto the top of t.
-      If there is not enough room in t to hold
-      these entries return a code of overflow, otherwise
-      return success.
- 
+Ennakkoehto: Ei ole.
+
+ Jälkiehto: Kaikki alkiot pinosta s on siirretty
+ järjestyksessä pinon t päälle.
+ Jos pinossa t ei ole tarpeeksi tilaa kaikille pinon s alkioille,
+ palautetaan virhekoodi overflow, muuten palautetaan success.
 */
 
 {
@@ -91,15 +85,12 @@ Post: All entries from s have been moved in order
 }
  
 Error_code reverse_move_stack(Stack &s, Stack &t)
-/* 
- 
-Pre:   None.
-Post: All entries from s have been moved in reverse order
-      onto the top of t.
-      If there is not enough room in t to hold
-      these entries return a code of overflow, otherwise
-      return success.
- 
+/*
+Ennakkoehto: Ei ole.
+
+Jälkiehto: Kaikki alkiot pinosta s on siirretty käänteisessäjärjestyksessä
+pinon t päälle. Jos pinossa t ei ole tarpeeksi tilaa kaikille pinon s alkioille,
+ palautetaan virhekoodi overflow, muuten palautetaan success.
 */
 
 {
@@ -116,8 +107,9 @@ Post: All entries from s have been moved in reverse order
 Error_code reverse_queue(Queue &q)
 /* 
  
-Pre:   None.
-Post: All entries from q have been reversed.
+Ennakkoehto: Ei ole.
+
+Jälkiehto: Kaikki alkiot jonosta q on käännetty ympäri.
  
 */
 
@@ -143,8 +135,9 @@ Post: All entries from q have been reversed.
 Error_code reverse_stack(Stack &s)
 /* 
  
-Pre:   None.
-Post: All entries from s have been reversed.
+Ennakkoehto: Ei ole.
+
+ Jälkiehto: Kaikki alkiot pinosta s on käännetty ympäri.
  
 */
 
