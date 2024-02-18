@@ -24,16 +24,17 @@ void Calc::processInput(const std::string& input) {
 
     while (iss >> token) {
         if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1]))) {
-            // Jos ensimmäinen merkki on numero tai negatiivisen luvun etumerkki, lisää luku pinoon.
-            int value = std::stoi(token);
+            // If the first character is a digit or a negative sign followed by a digit, convert to double.
+            double value = std::stod(token);
             stack.push(value);
         } else if (token == "x") {
             // Jos syöte on 'x', vaihda pinon kahden päällimmäisen alkion paikkaa.
             exchangeTopTwo();
-        } else {
+        } else if (isOperator(token)) {
             // Muussa tapauksessa kyseessä on operaatio, suorita se.
-            char operation = token[0];
-            performOperation(operation);
+            performOperation(token[0]);
+        } else {
+            std::cout << "Virhe: Tuntematon operaatio '" << token << "'." << std::endl;
         }
     }
 }
@@ -43,84 +44,87 @@ void Calc::performOperation(char operation) {
     switch (operation) {
         case '+': {
             // Yhteenlaskuoperaatio.
-            int result = 0;
-            while (stack.getTop() > 0) {
-                result += stack.pop();
+            if (stack.getCount() >= 2) {
+                double secondOperand = stack.pop();
+                double firstOperand = stack.pop();
+                double result = firstOperand + secondOperand;
+                stack.push(result);
+            } else {
+                std::cout << "Virhe: Liian vähän alkioita pinossa yhteenlaskuun." << std::endl;
             }
-            stack.push(result);
             break;
         }
 
         case '-': {
             // Vähennyslaskuoperaatio.
-            if (stack.getCount() == 2) {
-                // Normaalitilanteessa vähennyslasku kahdelle operandille
-                int operand2 = stack.pop();
-                int operand1 = stack.pop();
-                int result = operand2 - operand1;
-                stack.push(result);
-            } else if (stack.getCount() > 2) {
-                // Käänteinen järjestys, jos pinossa on enemmän kuin kaksi alkiota
-                stack.reverseStack();
-
-                int result = stack.pop();  // Aloita vähennyslasku ensimmäisestä operandista
-                while (stack.getCount() >= 1) {
-                    int operand = stack.pop();
-                    result -= operand;  // Vähennä jokainen operandi tuloksesta
-                }
+            if (stack.getCount() >= 2) {
+                double secondOperand = stack.pop();
+                double firstOperand = stack.pop();
+                double result = firstOperand - secondOperand;
                 stack.push(result);
             } else {
-                std::cout << "Virhe: Liian vähän alkioita pinossa vähennyslaskuun." << std::endl;
-                return;  // Palaa virhetilanteessa
+                std::cout << "Virhe: Liian vähän alkioita pinossa yhteenlaskuun." << std::endl;
             }
             break;
         }
 
         case '*': {
             // Kertolaskuoperaatio.
-            int result = 1;
-            while (stack.getTop() > 0) {
-                result *= stack.pop();
+            if (stack.getCount() >= 2) {
+                double secondOperand = stack.pop();
+                double firstOperand = stack.pop();
+                double result = firstOperand * secondOperand;
+                stack.push(result);
+            } else {
+                std::cout << "Virhe: Liian vähän alkioita pinossa kertolaskuun." << std::endl;
             }
-            stack.push(result);
             break;
         }
 
         case '/': {
             // Jakolaskuoperaatio.
-            int result = stack.pop();
-            while (stack.getTop() > 0) {
-                int denominator = stack.pop();
-                if (denominator != 0) {
-                    result /= denominator;
+            if (stack.getCount() >= 2) {
+                double denominator = stack.pop();
+                double numerator = stack.pop();
+                if (denominator != 0.0) {
+                    double result = numerator / denominator;
+                    stack.push(result);
                 } else {
                     std::cout << "Virhe: Nollalla jakaminen." << std::endl;
-                    return;
+                    return;  // Lisää return tähän poistuaksesi funktiosta virhetilanteessa
                 }
+            } else {
+                std::cout << "Virhe: Liian vähän alkioita pinossa jakolaskuun." << std::endl;
+                return;  // Lisää return tähän poistuaksesi funktiosta virhetilanteessa
             }
-            stack.push(result);
             break;
         }
 
         case 'e': {
-            // Potenssioperaatio.
-            int result = 1;
-            while (stack.getTop() > 0) {
-                result = std::pow(stack.pop(), result);
+            // Eksponenttioperaatio.
+            if (stack.getCount() >= 2) {
+                double exponent = stack.pop();
+                double base = stack.pop();
+                double result = pow(base, exponent);
+                stack.push(result);
+            } else {
+                std::cout << "Virhe: Liian vähän alkioita pinossa eksponenttioperaatioon." << std::endl;
             }
-            stack.push(result);
             break;
         }
 
         case 'r': {
             // Neliöjuurioperaatio.
-            double top = stack.pop();
-            if (top >= 0) {
-                stack.push(std::sqrt(top));
-                std::cout << "Neliöjuuri: " << std::fixed << std::setprecision(2) << std::sqrt(top) << std::endl;
-                std::cout << "Neliöjuuri kokonaisukuun pyöristettynä: " << static_cast<int>(std::sqrt(top)) << std::endl;
+            if (stack.getCount() >= 1) {
+                double value = stack.pop();
+                if (value >= 0) {
+                    double result = sqrt(value);
+                    stack.push(result);
+                } else {
+                    std::cout << "Virhe: Neliöjuuri negatiivisesta luvusta." << std::endl;
+                }
             } else {
-                std::cout << "Virhe: Neliöjuuri negatiivisesta luvusta." << std::endl;
+                std::cout << "Virhe: Liian vähän alkioita pinossa neliöjuurioperaatioon." << std::endl;
             }
             break;
         }
@@ -134,12 +138,21 @@ void Calc::performOperation(char operation) {
                 ++count;
             }
             if (count > 0) {
-                std::cout << "Keskiarvo: " << std::fixed << std::setprecision(2) << sum / count << std::endl;
-                std::cout << "Keskiarvo kokonaislukuun pyöristettynä: ";
-                stack.push(static_cast<int>(sum / count));
+                double average = sum / count;
+                stack.push(average);  // Push the average back to the stack
             } else {
                 std::cout << "Virhe: Keskiarvon laskeminen tyhjästä pinosta." << std::endl;
             }
+            break;
+        }
+
+        case 's': {
+            // Summa-operaatio.
+            double sum = 0.0;
+            while (stack.getTop() > 0) {
+                sum += stack.pop();
+            }
+            stack.push(sum);
             break;
         }
 
@@ -171,22 +184,29 @@ void Calc::performOperation(char operation) {
 void Calc::exchangeTopTwo() {
     // Vaihtaa pinon kahden päällimmäisen alkion paikkaa.
     if (stack.getTop() >= 2) {
-        int top = stack.pop();     // Poista päällimmäinen alkio
-        int second = stack.pop();  // Poista toiseksi päällimmäinen alkio
+        int top = static_cast<int>(stack.pop());       // Poista päällimmäinen alkio
+        int second = static_cast<int>(stack.pop());    // Poista toiseksi päällimmäinen alkio
 
         // Lisää alkiot takaisin samaan järjestykseen
-        stack.push(second);
         stack.push(top);
+        stack.push(second);
     } else {
         std::cout << "Virhe: Liian vähän alkioita pinossa vaihtamiseen." << std::endl;
     }
 }
 
 void Calc::printResult() {
-    // Tulostaa lopputuloksen.
-    if (!stack.isFull()) {
-        std::cout << "Tulos: " << stack.getTop() << std::endl;
+
+    if (stack.getCount() == 1) {
+        std::cout << std::fixed << std::setprecision(2) << stack.pop() << std::endl;
     } else {
-        std::cout << "Virhe: Epätäydellinen laskutoimitus." << std::endl;
+        std::cout << "Virhe: Epätäydellinen laskutoimitus tai liian monta alkiota pinossa." << std::endl;
     }
 }
+
+bool Calc::isOperator(const std::string& token) {
+    // Tarkistaa, onko merkkijono operaattori (+, -, *, /, e, r, a, %, x, s).
+    return token.size() == 1 && (token[0] == '+' || token[0] == '-' || token[0] == '*' || token[0] == '/'
+    || token[0] == 'e' || token[0] == 'r' || token[0] == 'a' || token[0] == '%' || token[0] == 'x' || token[0] == 's');
+}
+

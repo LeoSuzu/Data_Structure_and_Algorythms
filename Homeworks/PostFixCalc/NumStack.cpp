@@ -13,7 +13,7 @@
 NumStack::NumStack(int size) : top(0) {
     // Rakentaja (konstruktori) - Alustaa NumStack-luokan olion.
     max = (size > 0) ? size : 10;  // Määrittää pinon maksimikoon.
-    stack = new int[max];  // Alustaa dynaamisen taulukon pinolle.
+    stack = new double[max];  // Alustaa dynaamisen taulukon pinolle.
 }
 
 NumStack::~NumStack() {
@@ -21,7 +21,7 @@ NumStack::~NumStack() {
     delete[] stack;  // Poistaa dynaamisen taulukon.
 }
 
-void NumStack::push(int value) {
+void NumStack::push(double value) {
     // Lisää arvon pinoon.
     if (!isFull()) {
         stack[top++] = value;
@@ -30,7 +30,7 @@ void NumStack::push(int value) {
     }
 }
 
-int NumStack::pop() {
+double NumStack::pop() {
     // Poistaa ja palauttaa päällimmäisen alkion pinosta.
     if (top > 0) {
         return stack[--top];
@@ -59,17 +59,17 @@ void NumStack::print() {
     std::cout << std::endl;
 }
 
-int NumStack::getTop() {
+double NumStack::getTop() {
     // Palauttaa päällimmäisen alkion pinosta tai -1 tyhjälle pinolle.
     return top > 0 ? stack[top - 1] : -1;
 }
 
-int NumStack::getSecond() {
+double NumStack::getSecond() {
     // Palauttaa toiseksi päällimmäisen alkion pinosta tai -1 pinolle, jossa on alle kaksi alkiota.
     return top > 1 ? stack[top - 2] : -1;
 }
 
-int* NumStack::getStack() {
+double* NumStack::getStack() {
     // Palauttaa pinoon liittyvän taulukon.
     return stack;
 }
@@ -84,26 +84,4 @@ void NumStack::setStack(int* newStack) {
 int NumStack::getMax() {
     // Palauttaa pinon maksimikoon.
     return max;
-}
-
-// Reverse the contents of the stack
-void NumStack::reverseStack() {
-    if (top <= 0) {
-        // Stack is empty or has only one element, no need to reverse
-        return;
-    }
-
-    int start = 0;
-    int end = top - 1;
-
-    while (start < end) {
-        // Swap elements at start and end indices
-        int temp = stack[start];
-        stack[start] = stack[end];
-        stack[end] = temp;
-
-        // Move indices towards each other
-        start++;
-        end--;
-    }
 }

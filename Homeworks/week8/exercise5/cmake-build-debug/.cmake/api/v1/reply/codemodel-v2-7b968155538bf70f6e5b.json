@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "exercise5",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "exercise5::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exercise5-Debug-000d3f2c7c3a2204bb06.json",
+					"name" : "exercise5",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/LeMac/Library/CloudStorage/OneDrive-TUNI.fi/Data_Structure_and_Algorythms/Homeworks/week8/exercise5/cmake-build-debug",
+		"source" : "/Users/LeMac/Library/CloudStorage/OneDrive-TUNI.fi/Data_Structure_and_Algorythms/Homeworks/week8/exercise5"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

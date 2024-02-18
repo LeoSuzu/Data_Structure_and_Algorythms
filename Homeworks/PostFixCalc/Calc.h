@@ -39,6 +39,9 @@ public:
 
     // Tulosta laskimen tulos
     void printResult();
+
+    // Tarkista, onko annettu merkki operaattori
+    bool isOperator(const std::string& token);
 };
 
 #endif // POSTFIXCALC_CALC_H

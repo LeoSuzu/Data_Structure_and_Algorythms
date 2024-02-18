@@ -16,7 +16,7 @@ class NumStack {
 private:
     int max;     // Maksimikoko pinolle
     int top;     // Pinon päällimmäisen alkion indeksi
-    int* stack;  // Pinon taulukko
+    double* stack;  // Pinon taulukko (dynaaminen taulukko)
 
 public:
     // Rakentaja, oletusarvona koko 10
@@ -26,10 +26,10 @@ public:
     ~NumStack();
 
     // Lisää arvon pinon päälle
-    void push(int value);
+    void push(double value);
 
     // Poista ja palauta pinon päällimmäinen arvo
-    int pop();
+    double pop();
 
     // Tyhjennä pino
     void clear();
@@ -41,13 +41,13 @@ public:
     void print();
 
     // Palauta pinon päällimmäinen arvo
-    int getTop();
+    double getTop();
 
     // Palauta pinon toiseksi päällimmäinen arvo
-    int getSecond();
+    double getSecond();
 
     // Palauta pinon taulukko
-    int* getStack();
+    double* getStack();
 
     // Aseta uusi taulukko pinoon
     void setStack(int* newStack);
@@ -58,8 +58,6 @@ public:
     int getCount() const {
         return top;
     }
-
-    void reverseStack();
 
 };
 

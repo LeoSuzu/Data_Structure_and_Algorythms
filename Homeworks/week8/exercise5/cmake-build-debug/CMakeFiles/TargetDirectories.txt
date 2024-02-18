@@ -1,0 +1,3 @@
+/Users/LeMac/Library/CloudStorage/OneDrive-TUNI.fi/Data_Structure_and_Algorythms/Homeworks/week8/exercise5/cmake-build-debug/CMakeFiles/exercise5.dir
+/Users/LeMac/Library/CloudStorage/OneDrive-TUNI.fi/Data_Structure_and_Algorythms/Homeworks/week8/exercise5/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/LeMac/Library/CloudStorage/OneDrive-TUNI.fi/Data_Structure_and_Algorythms/Homeworks/week8/exercise5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
