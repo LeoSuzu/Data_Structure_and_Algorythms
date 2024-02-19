@@ -1,9 +1,8 @@
 # ninja log v5
-1	3443	1707117708069935807	CMakeFiles/Exercise4.dir/extended_queue.cpp.o	5d6bbf61835524f5
-1	3570	1707117708193948249	CMakeFiles/Exercise4.dir/queue.cpp.o	ebe99ae83f7d378a
-1	3574	1707117708196320551	CMakeFiles/Exercise4.dir/main.cpp.o	e3f6a69bc57c36ac
-3	3586	1707117708205282624	CMakeFiles/Exercise4.dir/utility.cpp.o	30102adf44224822
 2	3599	1707117708227332088	CMakeFiles/Exercise4.dir/stack.cpp.o	24b957eb3add5860
-3599	3727	1707117708367264267	Exercise4	4f7ecd286dd203b3
+3	3586	1707117708205282624	CMakeFiles/Exercise4.dir/utility.cpp.o	30102adf44224822
 7	1414	1707118752325489818	CMakeFiles/Exercise4.dir/main.cpp.o	e3f6a69bc57c36ac
+1	3570	1707117708193948249	CMakeFiles/Exercise4.dir/queue.cpp.o	ebe99ae83f7d378a
 1417	1531	1707118752450037328	Exercise4	4f7ecd286dd203b3
+1	3443	1707117708069935807	CMakeFiles/Exercise4.dir/extended_queue.cpp.o	5d6bbf61835524f5
+1	178	1708354878219226880	build.ninja	bd18944725c568ec

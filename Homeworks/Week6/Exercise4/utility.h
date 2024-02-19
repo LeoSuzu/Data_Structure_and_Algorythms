@@ -1,10 +1,6 @@
-#pragma once 
 
-#include <iostream> 
-#include <fstream> 
-#include <string> 
-#include <ctype.h> 
-#include <time.h> 
+#pragma once
+
 using namespace std;
 
 // Tarvitaan aina projecteihin

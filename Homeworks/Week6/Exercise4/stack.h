@@ -1,7 +1,6 @@
 #pragma once
-
-#include "utility.h"
-// Section 2.2:
+using namespace std;
+#include "utility.h";
 
 typedef char Stack_entry;  //  The program will use stacks with int entries.
 

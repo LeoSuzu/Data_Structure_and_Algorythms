@@ -2,12 +2,6 @@
 
 
 Error_code Stack::push(const Stack_entry &item)
-/*
-Pre:  None.
-Post: If the Stack is not full, item is added to the top
-of the Stack.  If the Stack is full,
-an Error_code of overflow is returned and the Stack is left unchanged.
-*/
 
 {
 	Error_code outcome = success;
@@ -20,12 +14,6 @@ an Error_code of overflow is returned and the Stack is left unchanged.
 
 
 Error_code Stack::pop()
-/*
-Pre:  None.
-Post: If the Stack is not empty, the top of
-the Stack is removed.  If the Stack
-is empty, an Error_code of underflow is returned.
-*/
 
 {
 	Error_code outcome = success;
@@ -37,12 +25,6 @@ is empty, an Error_code of underflow is returned.
 
 
 Error_code Stack::top(Stack_entry &item) const
-/*
-Pre:  None.
-Post: If the Stack is not empty, the top of
-the Stack is returned in item.  If the Stack
-is empty an Error_code of underflow is returned.
-*/
 
 {
 	Error_code outcome = success;
@@ -55,11 +37,6 @@ is empty an Error_code of underflow is returned.
 
 
 bool Stack::empty() const
-/*
-Pre:  None.
-Post: If the Stack is empty, true is returned.
-Otherwise false is returned.
-*/
 
 {
 	bool outcome = true;
@@ -69,10 +46,6 @@ Otherwise false is returned.
 
 
 Stack::Stack()
-/*
-Pre:  None.
-Post: The stack is initialized to be empty.
-*/
 {
 	count = 0;
 }
@@ -81,7 +54,7 @@ void Stack::print(const char *title_p)
 {
 	bool first_time = true;
 
-	cout << title_p << endl;
+	std::cout << title_p << endl;
 	for ( int i = 0; i < ( int )( strlen( title_p ) ); i++ )
 		cout << "=";
 	cout << endl << endl;
