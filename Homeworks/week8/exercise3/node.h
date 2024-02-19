@@ -4,11 +4,12 @@
 
 #pragma once
 
-template <typename T>
+typedef char Stack_entry; // The program will use stacks with char entries.
+
 class Node {
 public:
-    T data;
+    Stack_entry data;
     Node* next;
 
-    Node(const T& value, Node* nextNode = nullptr) : data(value), next(nextNode) {}
+    Node(Stack_entry item, Node* link = nullptr) : data(item), next(link) {}
 };
