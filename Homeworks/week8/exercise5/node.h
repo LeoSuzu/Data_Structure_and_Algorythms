@@ -5,20 +5,25 @@
 
 #include "utility.h"
 
-typedef char Stack_entry;  // The program will use stacks with char entries.
+// Define the Stack_entry type to be char for now.
+typedef char Stack_entry;
 
 class Node {
 public:
+    // Data members
     Stack_entry data;
+    // Pointer to the next node
     Node *next;
-
+    // Constructors
     Node(Stack_entry item, Node *link = nullptr) : data(item), next(link) {}
 };
 
 class Node_chain {
 public:
+    // Constructors and destructors
     Node_chain();
-    ~Node_chain();  // Add a destructor to free memory.
+    ~Node_chain();
+    // Public member functions
     bool empty() const;
     Error_code pop();
     Error_code top(Stack_entry &item) const;
@@ -26,10 +31,10 @@ public:
     void print(const char *title_p);
     int size() const;
 
+    // Friend functions
     friend Error_code copy_stack_c(Node_chain &dest, const Node_chain &source);
 
 private:
-private:
-    Node *top_node;  // Keep track of the top node.
-    int stack_size;  // Counter for the size of the stack.
+    Node *top_node; // Pointer to the top of the stack
+    int stack_size; //
 };

@@ -4,14 +4,18 @@
 
 #include "node.h"
 
+// Constructors and destructors
 Node_chain::Node_chain() : top_node(nullptr), stack_size(0) {}
 
 Node_chain::~Node_chain() {
     while (!empty()) {
         pop();
     }
+    top_node = nullptr;  // Ensure consistency
+    stack_size = 0;      // Ensure consistency
 }
 
+// Public member functions
 bool Node_chain::empty() const {
     return top_node == nullptr;
 }
@@ -51,16 +55,28 @@ void Node_chain::print(const char *title_p) {
     // Implementation for print remains the same as before.
 }
 
-// You can also implement the copy_stack_c function similarly to copy_stack in the array-based version.
+// New copy_stack_c function
 Error_code copy_stack_c(Node_chain &dest, const Node_chain &source) {
     dest.~Node_chain();  // Destroy the current content of dest.
     dest = Node_chain();  // Reconstruct dest.
 
-    int source_size = source.size();
-    for (int i = 0; i < source_size; ++i) {
+    // Copy the source stack to a temporary stack
+    Node_chain temp_stack;
+    // Traverse the source stack and push each element to the temporary stack
+    Node *current_source = source.top_node;
+
+    // While the current source is not null, push the data to the temporary stack
+    while (current_source != nullptr) {
+        temp_stack.push(current_source->data);
+        current_source = current_source->next;
+    }
+
+    // While the temporary stack is not empty, pop the data and push it to the destination stack
+    while (!temp_stack.empty()) {
         Stack_entry item;
-        source.top(item);
+        temp_stack.top(item);
         dest.push(item);
+        temp_stack.pop();
     }
 
     return success;
