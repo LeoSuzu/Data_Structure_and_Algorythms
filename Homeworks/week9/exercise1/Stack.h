@@ -5,7 +5,10 @@
 #ifndef EXERCISE1_STACK_H
 #define EXERCISE1_STACK_H
 
-# include "utility.h"
+#include "Utility.h"
+#include "Node.h"
+
+typedef char Stack_entry;
 
 class Stack {
 public:

@@ -31,13 +31,6 @@ Post: The top of the Stack is removed.  If the Stack
 }
 
 
-Error_code Stack::push(Stack_entry item)
-{
-    Node new_top(item, top_node);
-    top_node = new_top;
-    return success;
-}
-
 void Stack::operator = (const Stack &original) //  Overload assignment
 /*
 Post: The Stack is reset as a copy of Stack original.
@@ -78,4 +71,14 @@ Post: The Stack is initialized as a copy of Stack original.
             new_copy = new_copy->next;
         }
     }
+}
+
+Stack::~Stack() {
+    while (!empty()) {
+        pop();
+    }
+}
+
+bool Stack::empty() const {
+    return top_node == nullptr;
 }
